@@ -3,17 +3,7 @@
 
 This project forecasts IMDb ratings for 12 upcoming films by training a multiple linear regression model on a dataset of \~1,930 historical movies. It delivers a reproducible R pipeline—complete with data cleaning, feature engineering, model training, and evaluation—culminating in an adjusted R² of 0.476 and the lowest MSE in a class-wide prediction challenge.
 
-### Problem Statement
-
-Studios and distributors need reliable forecasts of audience reception to guide budgeting, marketing, and release strategies. However, IMDb ratings depend on multiple film attributes—budgets, duration, star power, media coverage, genres, and production details—making accurate prediction nontrivial. This project addresses that challenge by building and validating a transparent regression model to predict ratings for films yet to be released.
-
-### Data Sources
-
-* **IMDB\_data\_Fall\_2024.csv**: Historical dataset of \~1,930 films (budget, duration, news articles count, star-meter rankings, maturity rating, genres, country, top personnel flags, and IMDb score).
-* **test\_data\_IMDB\_Fall\_2024.csv**: 12 upcoming film records without scores for out-of-sample evaluation.
-* **data\_dictionary\_IMDB\_Fall\_2024.csv**: Descriptions and value ranges for each variable.
-
-### Directory layout**
+### Directory layout
 
    ```bash
    .
@@ -35,6 +25,17 @@ Studios and distributors need reliable forecasts of audience reception to guide 
    └── tests
        └── Test_modeling.R 
    ```
+
+### Problem Statement
+
+Studios and distributors need reliable forecasts of audience reception to guide budgeting, marketing, and release strategies. However, IMDb ratings depend on multiple film attributes—budgets, duration, star power, media coverage, genres, and production details—making accurate prediction nontrivial. This project addresses that challenge by building and validating a transparent regression model to predict ratings for films yet to be released.
+
+### Data Sources
+
+* IMDB\_data\_Fall\_2024.csv: Historical dataset of \~1,930 films (budget, duration, news articles count, star-meter rankings, maturity rating, genres, country, top personnel flags, and IMDb score).
+* test\_data\_IMDB\_Fall\_2024.csv: 12 upcoming film records without scores for out-of-sample evaluation.
+* data\_dictionary\_IMDB\_Fall\_2024.csv: Descriptions and value ranges for each variable.
+
 ### Methodology / Approach
 
 1. **Data Cleaning & EDA**
