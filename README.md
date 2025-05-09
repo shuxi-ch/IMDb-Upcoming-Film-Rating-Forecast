@@ -13,48 +13,11 @@ Studios and distributors need reliable forecasts of audience reception to guide 
 * **test\_data\_IMDB\_Fall\_2024.csv**: 12 upcoming film records without scores for out-of-sample evaluation.
 * **data\_dictionary\_IMDB\_Fall\_2024.csv**: Descriptions and value ranges for each variable.
 
-### Methodology / Approach
-
-1. **Data Cleaning & EDA**
-
-   * Dropped non-predictive fields (`movie_title`, `imdb_link`, `plot_keywords`).
-   * Log-transformed skewed variables: `movie_budget`, `nb_news_articles`, `actor*_star_meter`, and `movie_meter_IMDBpro`.
-   * Visualized distributions and correlations to spot anomalies and multicollinearity.
-2. **Feature Engineering**
-
-   * Added polynomial terms (`poly(duration,2)`, `poly(actor1_star_meter,2)`) to capture nonlinear effects.
-   * One-hot encoded categorical predictors: maturity ratings, country, top director/actor/distributor flags, and genre indicators.
-   * Evaluated Variance Inflation Factors (VIF) and dropped collinear features to stabilize estimates.
-3. **Model Training & Evaluation**
-
-   * Performed an 80/20 stratified train/test split.
-   * Fitted a multiple linear regression (`lm()`) and assessed performance via adjusted R², RMSE, and residual diagnostics.
-   * Achieved **Adjusted R² = 0.476** on training data and won the class challenge with the lowest MSE on the 12-film test set.
-4. **Reproducibility**
-
-   * Encapsulated reusable code into `R/` scripts.
-   * Locked package versions using **renv** for exact environment restoration.
-
-### Installation / Setup
-
-1. **Clone the repository**
-
-   ```bash
-   git clone https://github.com/shuxi-ch/IMDb-Upcoming-Film-Rating-Forecast.git
-   cd IMDb-Upcoming-Film-Rating-Forecast
-   ```
-2. **Restore R environment**
-
-   ```r
-   install.packages("renv")
-   renv::restore()   # installs packages and versions from renv.lock
-   ```
-3. **Directory layout**
+### Directory layout**
 
    ```bash
    .
    ├── README.md
-   ├── renv.lock
    ├── data
    │   ├── raw
    │   │   ├── IMDB_data_Fall_2024.csv
@@ -72,34 +35,24 @@ Studios and distributors need reliable forecasts of audience reception to guide 
    └── tests
        └── Test_modeling.R 
    ```
+### Methodology / Approach
 
-### Usage / How to Run
+1. **Data Cleaning & EDA**
 
-1. **Data preprocessing**
+   * Dropped non-predictive fields (`movie_title`, `imdb_link`, `plot_keywords`).
+   * Log-transformed skewed variables: `movie_budget`, `nb_news_articles`, `actor*_star_meter`, and `movie_meter_IMDBpro`.
+   * Visualized distributions and correlations to spot anomalies and multicollinearity.
+2. **Feature Engineering**
 
-   ```bash
-   # In RStudio or from command line
-   Rscript -e "rmarkdown::render('R/EDA&DataPreprocessing.R')"
-   ```
+   * Added polynomial terms (`poly(duration,2)`, `poly(actor1_star_meter,2)`) to capture nonlinear effects.
+   * One-hot encoded categorical predictors: maturity ratings, country, top director/actor/distributor flags, and genre indicators.
+   * Evaluated Variance Inflation Factors (VIF) and dropped collinear features to stabilize estimates.
+3. **Model Training & Evaluation**
 
-   Produces `data/processed/imdb_cleaned.csv` and figures in `reports/EDA_Report.pdf`.
-2. **Model training & evaluation**
+   * Performed an 80/20 stratified train/test split.
+   * Fitted a multiple linear regression (`lm()`) and assessed performance via adjusted R², RMSE, and residual diagnostics.
+   * Achieved **Adjusted R² = 0.476** on training data and won the class challenge with the lowest MSE on the 12-film test set.
 
-   ```bash
-   Rscript -e "rmarkdown::render('R/Modeling.R')"
-   ```
-
-   Outputs model summaries, diagnostic plots, and test-set MSE in `reports/IMDB_Score_Prediction_Report.pdf`.
-3. **Programmatic API**
-
-   ```r
-   source("R/EDA&DataPreprocessing.R")
-   df <- load_and_clean("data/raw/IMDB_data_Fall_2024.csv")
-
-   source("R/modeling.R")
-   fit <- train_lm(df_feat)
-   preds <- predict_lm(fit, read.csv("data/raw/test_data_IMDB_Fall_2024.csv"))
-   ```
 ### Key Results & Visualizations
 *   **Model Performance:**
     *   R-squared: 0.4857
@@ -124,3 +77,4 @@ Studios and distributors need reliable forecasts of audience reception to guide 
 *   Refine feature engineering, potentially using more sophisticated text analysis for plot keywords or sentiment analysis for news articles if available.
 *   Expand the dataset with more historical data or additional relevant features.
 *   Test on additional upcoming film batches and track real vs. predicted ratings over time.
+
