@@ -1,4 +1,5 @@
 # IMDb-Upcoming-Film-Rating-Forecast
+
 ### Overview
 
 This project forecasts IMDb ratings for 12 upcoming films by training a multiple linear regression model on a dataset of \~1,930 historical movies. It delivers a reproducible R pipeline—complete with data cleaning, feature engineering, model training, and evaluation—culminating in an adjusted R² of 0.476 and the lowest MSE in a class-wide prediction challenge.
@@ -26,9 +27,13 @@ This project forecasts IMDb ratings for 12 upcoming films by training a multiple
        └── Test_modeling.R 
    ```
 
+----
+
 ### Problem Statement
 
 Studios and distributors need reliable forecasts of audience reception to guide budgeting, marketing, and release strategies. However, IMDb ratings depend on multiple film attributes—budgets, duration, star power, media coverage, genres, and production details—making accurate prediction nontrivial. This project addresses that challenge by building and validating a transparent regression model to predict ratings for films yet to be released.
+
+----
 
 ### Data Sources
 
@@ -36,7 +41,9 @@ Studios and distributors need reliable forecasts of audience reception to guide 
 * test\_data\_IMDB\_Fall\_2024.csv: 12 upcoming film records without scores for out-of-sample evaluation.
 * data\_dictionary\_IMDB\_Fall\_2024.csv: Descriptions and value ranges for each variable.
 
-### Methodology / Approach
+----
+
+### Methodology
 
 1. **Data Cleaning & EDA**
 
@@ -54,7 +61,9 @@ Studios and distributors need reliable forecasts of audience reception to guide 
    * Fitted a multiple linear regression (`lm()`) and assessed performance via adjusted R², RMSE, and residual diagnostics.
    * Achieved **Adjusted R² = 0.476** on training data and won the class challenge with the lowest MSE on the 12-film test set.
 
-### Key Results & Visualizations
+----
+
+### Results
 *   **Model Performance:**
     *   R-squared: 0.4857
     *   Adjusted R-squared: 0.476
@@ -62,6 +71,8 @@ Studios and distributors need reliable forecasts of audience reception to guide 
 *   **Test MSE**: Predicted IMDb Scores for 12 Upcoming Movies (Lowest among peer submissions on 12 upcoming films)
 *   **Key Predictors:** Movie budget (log), duration (log, quadratic), number of news articles (log), IMDbPro movie meter (log), specific genres (Drama, Horror, Comedy, etc.), maturity rating (R), and presence of top-tier production personnel.
 *   Visualizations included histograms of variable distributions, boxplots for categorical comparisons, correlation matrices/heatmaps, and residual plots. (Refer to `MGSC661 Midterm Report.pdf` and `EDA_DataPreprocessing.html` for figures).
+
+----
 
 ### Key Learnings & Challenges
 
@@ -71,7 +82,9 @@ Studios and distributors need reliable forecasts of audience reception to guide 
 * **Out-of-Sample Validation:** Emphasized LOOCV for a more reliable estimate of predictive performance on unseen data.
 * **Nonlinearity**: Polynomial terms captured diminishing returns of duration and star power.
 
-### Next Steps / Future Enhancements
+----
+
+### Future Enhancements
 
 *   Explore more advanced regression techniques (e.g., Ridge, Lasso, Elastic Net) or tree-based models (Random Forest, Gradient Boosting) to potentially improve predictive accuracy.
 *   Incorporate interaction terms between predictors (e.g., genre and budget, actor and director).
