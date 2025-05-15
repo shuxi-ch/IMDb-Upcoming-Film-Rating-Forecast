@@ -70,7 +70,6 @@ Studios and distributors need reliable forecasts of audience reception to guide 
     *   Mean Squared Error (LOOCV): 0.5967
 *   **Test MSE**: Predicted IMDb Scores for 12 Upcoming Movies (Lowest among peer submissions on 12 upcoming films)
 *   **Key Predictors:** Movie budget (log), duration (log, quadratic), number of news articles (log), IMDbPro movie meter (log), specific genres (Drama, Horror, Comedy, etc.), maturity rating (R), and presence of top-tier production personnel.
-*   Visualizations included histograms of variable distributions, boxplots for categorical comparisons, correlation matrices/heatmaps, and residual plots. (Refer to `MGSC661 Midterm Report.pdf` and `EDA_DataPreprocessing.html` for figures).
 
 ----
 
